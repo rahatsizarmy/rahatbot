@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 exports.run = function(client, message, args) {
-  message.reply(':point_right: Pong! **' + client.ping + '** ms');
+  message.reply('Pingim   ==  '+ client.ping);
 };
 
 exports.conf = {
@@ -11,7 +11,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: ['ping', 'p',]
+  name: 'ping',
   description: 'Botun pingini gösterir.',
   usage: 'ping'
 };

@@ -4,26 +4,13 @@ const ayarlar = require('../ayarlar.json');
 var prefix = ayarlar.prefix;
 
 exports.run = (client, message, params) => {
-
-  if (!params[0]) {
-    const commandNames = Array.from(client.commands.keys());
-    const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);
-    message.author.sendCode('asciidoc', `= Komut Listesi =\n\n[Komut hakkında bilgi için ${ayarlar.prefix}yardım <komut adı>]\n\n${client.commands.map(c => `${ayarlar.prefix}${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}`).join('\n')}`);
-  if (message.channel.type !== 'dm') {
-    const ozelmesajkontrol = new Discord.RichEmbed()
-    .setColor(0x00AE86)
-    .setTimestamp()
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('Özel mesajlarını kontrol et. :postbox:');
-    message.channel.sendEmbed(ozelmesajkontrol) }
-  } else {
-    let command = params[0];
-    if (client.commands.has(command)) {
-      command = client.commands.get(command);
-      message.author.sendCode('asciidoc', `= ${command.help.name} = \n${command.help.description}\nDoğru kullanım: ` + prefix + `${command.help.usage}`);
-    }
-  }
-
+  const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setAuthor(message.author.username, message.author.avatarURL)
+  .setTitle('Komut listesi')
+  .addField('Genel Komutlar','rb!ping == pingimi gösterir.\nrb!sunucubilgi == sunucu hakkında blgi verir.\nrb!yardım  ==  Botun Komutlarını Gösterir.\nrb!avatar ==  Etiketledğiniz Kişinin Avatarını Verir.\nrb!bilgi  == Bot Hakkında Bilgi Verir.')
+  .addField('Moderasyon','rb!ban == birini suncudan yasaklar\nrb!kick == birini sunucudan atar.\n')
+  return message.channel.sendEmbed(embed)
 };
 
 exports.conf = {
