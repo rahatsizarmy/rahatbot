@@ -113,9 +113,9 @@ client.on('error', e => {
 
 client.on("message", message => {
 
-const kufur = ["amk", "aq","oç","şerefsiz","orruspu çocuğu",",sikik","sex","31 çekelim","aq","piç"];
+const kufur = ["amk", "aq","oç","şerefsiz","orruspu çocuğu",",sikik","sex","31 çekelim","aq","piç","oc","sikdir","amı koduğumun"];
 if (kufur.some(word => message.content.includes(word)) ) {
-    message.reply("**Küfür Etme! Yasak** :rage:")
+    message.reply("**Küfür Etmek Yasak !** :rage:")
     message.delete()
   }
 });
