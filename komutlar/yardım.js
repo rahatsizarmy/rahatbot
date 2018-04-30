@@ -8,8 +8,10 @@ exports.run = (client, message, params) => {
   .setColor("RANDOM")
   .setAuthor(message.author.username, message.author.avatarURL)
   .setTitle('Komut listesi')
-  .addField('Genel Komutlar','rb!ping == pingimi gösterir.\nrb!sunucubilgi == sunucu hakkında blgi verir.\nrb!yardım  ==  Botun Komutlarını Gösterir.\nrb!avatar ==  Etiketledğiniz Kişinin Avatarını Verir.\nrb!bilgi  == Bot Hakkında Bilgi Verir.')
-  .addField('Moderasyon','rb!ban == birini suncudan yasaklar\nrb!kick == birini sunucudan atar.\nrb!temizle == Sohbeti Temizler\nrb!uyar == Bir Kişiyi Uyarırsınız\nrb!duyur == Güzel Bir Duyuru Görünümü Sağlar\nrb!kilitle == İstediğiniz Bir Kanalı Kilitlersiniz')
+  .addField('Genel Komutlar','rb!ping == pingimi gösterir.\nrb!sunucubilgi == sunucu hakkında blgi verir.\nrb!yardım  ==  Botun Komutlarını Gösterir.\nrb!avatar ==  Etiketledğiniz Kişinin Avatarını Verir.\nrb!bilgi  == Bot Hakkında Bilgi Verir.\nrb!tavsiye == Yapımcıya Tavsiye Gönderirsiniz.')
+  .addField('Moderasyon','rb!ban == birini suncudan yasaklar\nrb!kick == birini sunucudan atar.\nrb!temizle == Sohbeti Temizler\nrb!uyar == Bir Kişiyi Uyarırsınız\nrb!duyur == Güzel Bir Duyuru Görünümü Sağlar\nrb!kilitle == İstediğiniz Bir Kanalı Kilitlersiniz.')
+  .addField('Eğlence','rb!çay-iç == çay içersiniz ')
+  .addField('Yapımcı','Burasını Güvenlik İçin Gösteremiyorum :D :D')
   return message.channel.sendEmbed(embed)
 };
 

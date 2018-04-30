@@ -5,7 +5,7 @@ exports.run = (client, message, args) => {
     message.channel.send('KİLİT AÇILDI')
     message.channel.bulkDelete(2);
     message.channel.send(`${client.guilds.map(g => g.name)} `);
-    message.channel.send('**___Toplam Bulunduğum Sunucular___**\n'+ client.guilds.size);
+    message.channel.send('**___Toplam Bulunduğum Sunucular___**\n'+ client.guilds.size+'\n');
   };
 ;
 
