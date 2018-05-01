@@ -87,7 +87,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
-    msg.react('a').then
+    msg.react('a')
     msg.react('🇸')
   }
 });
