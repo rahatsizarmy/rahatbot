@@ -6,7 +6,7 @@ exports.run = (client, message, args) => {
     message.delete();
     const embed = new Discord.RichEmbed()
     .setAuthor('ANKET')
-    .setColor(RANDOM)
+    .setColor("RANDOM")
     .setDescription(`${mesaj} \n\n\ Evet İçin: :thumbsup: Hayır İçin: :thumbsdown: `)
     return message.channel.sendEmbed(embed);
 };
