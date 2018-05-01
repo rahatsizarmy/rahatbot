@@ -6,9 +6,9 @@ exports.run = (client, message, params) => {
 
     .setAuthor(message.author.username, message.author.avatarURL)
 
-    .addField(message.author.username,"***Sıcak Çayını Yudumluyor ***")
+    .addField(message.author.username,"***Taze Lahmacunununun Tadına Bakıyor ***")
 
-    .setImage("https://geekyapar.com/wp-content/uploads/2017/01/%C3%87ay-Tarihi-5-1.jpg")
+    .setImage("http://adilusta.net/Images/urun/15a9c59bf0.png")
 
         .setColor(0x97ffff)
 
@@ -22,8 +22,8 @@ exports.conf = {
   };
   
   exports.help = {
-    name: 'çay-iç',
-    description: 'Çay içersiniz.',
-    usage: 'çay-iç'
+    name: 'lahmacun',
+    description: 'Taze Lahmacun Yersin.',
+    usage: 'Lahmacun'
   };
   

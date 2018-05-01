@@ -14,7 +14,7 @@ exports.run = (client, message) => {
     .setColor(0x00AE86)
     .setTimestamp()
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('Bot sürümü: v' + ayarlar.surum + ' Yapımcı: Doğan **Rahatsız Bot**\n\n_**BOTU EKLEMEK İÇİN LİNK:**_\n\nhttps://discord.gg/XUG4g/authorize?client_id=411935386407796737&scope=bot&permissions=268839983 \n\n_**Linkler:**_\n\n**Rahatsız Bot** sunucusunun davet linki: https://discord.gg/XUG4g \nBotun davet linki: https://discordapp.com/oauth2/authorize?client_id=411935386407796737&scope=bot&permissions=268839983 \n\n**:copyright: 2018 Rahatsız Bot**');
+    .setDescription('Bot sürümü: v' + ayarlar.surum + ' Yapımcı: Doğan **Rahatsız Bot**\n\n_**BOTU EKLEMEK İÇİN LİNK:**_\n\nhttps://discord.gg/XUG4g/authorize?client_id=411935386407796737&scope=bot&permissions=268839983 \n\n_**Linkler:**_\n\n**Rahatsız Bot** sunucusunun davet linki: https://discord.gg/7xYz3nh \nBotun davet linki: https://discordapp.com/oauth2/authorize?client_id=411935386407796737&scope=bot&permissions=268839983 \n\n**:copyright: 2018 Rahatsız Bot**');
     return message.author.sendEmbed(pingozel)
 };
 
