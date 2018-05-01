@@ -87,7 +87,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
-    msg.react('a')
+    msg.react('🇦').then
     msg.react('🇸')
   }
 });
@@ -113,14 +113,7 @@ client.on('error', e => {
 });
 
 
-
-
-
- 
-
-
 client.on("message", message => {
-
 const kufur = ["amk", "aq","oç","şerefsiz","orruspu çocuğu",",sikik","sex","31 çekelim","aq","piç","oc","sikdir","amı koduğumun"];
 if (kufur.some(word => message.content.includes(word)) ) {
     message.reply("**Küfür Etmek Yasak !** :rage:")
