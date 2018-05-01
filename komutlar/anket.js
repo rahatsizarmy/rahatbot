@@ -9,6 +9,8 @@ exports.run = (client, message, args) => {
     .setColor("RANDOM")
     .setDescription(`${mesaj} \n\n\ Evet İçin: :thumbsup: Hayır İçin: :thumbsdown: `)
     return message.channel.sendEmbed(embed);
+    msg.react(':thumbsup:').then
+    msg.react(':thumbsdown:')
 };
 
 exports.conf = {
