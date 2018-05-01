@@ -3,26 +3,43 @@ exports.run = (client, message, args) => {
 
   if (!message.guild) {
   const ozelmesajuyari = new Discord.RichEmbed()
-  .setColor(0xFF0000)
+  .setColor("RANDOM")
   .setTimestamp()
   .setAuthor(message.author.username, message.author.avatarURL)
-  .addField(':warning: Uyarı :warning:', '`uyar` adlı komutu özel mesajlarda kullanamazsın.')
+  .addField(':warning: Uyarı :warning:', '`sustur` adlı komutu özel mesajlarda kullanamazsın.')
   return message.author.sendEmbed(ozelmesajuyari); }
+  message.channel.send("Uyarıyorum!")
+  .then(m => {
+        m.edit( 'Kullanıcıya `@Uyarıldı` Yetkisini Verdim Ve `#r-log` Kanalına Bildirdim!İyi Günler!');
+      });
   let guild = message.guild
   let reason = args.slice(1).join(' ');
   let user = message.mentions.users.first();
   let modlog = guild.channels.find('name', 'r-log');
-  if (!modlog) return message.reply('`r-log` kanalını bulamıyorum.');
-  if (reason.length < 1) return message.reply('Uyarı sebebini yazmalısın.');
-  if (message.mentions.users.size < 1) return message.reply('Kimi uyaracağını yazmalısın.').catch(console.error);
+  let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Uyarıldı');
+  if (!muteRole) return message.reply('`Uyarıldı` adlı bir rol bulamıyorum.').catch(console.error);
+   if (!modlog) return message.reply('`r-log` kanalını bulamıyorum.').catch(console.error);
+  if (message.mentions.users.size < 1) return message.reply('Kimi Uyaracağımı yazmalısın.').catch(console.error);
+  if (reason.length < 1) return message.reply('Uyarma sebebini yazmalısın.').catch(console.error);
   const embed = new Discord.RichEmbed()
-  .setColor(0x00AE86)
-  .setTimestamp()
-  .addField('Eylem:', 'Uyarı verme')
-  .addField('Kullanıcı:', `${user.username}#${user.discriminator}`)
-  .addField('Yetkili:', `${message.author.username}#${message.author.discriminator}`)
-  .addField('Sebep', reason);
-  return guild.channels.get(modlog.id).sendEmbed(embed);
+  .setColor("RANDOM")
+    .setTimestamp()
+    .addField('Eylem:', '🛃 Uyarma')
+    .addField('Kullanıcı:', `${user.username}#${user.discriminator} (${user.id})`)
+    .addField('Yetkili:', `${message.author.username}#${message.author.discriminator}`)
+    .addField('Sebep', reason);
+
+  if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('Gerekli izinlere sahip değilim.').catch(console.error);
+
+  if (message.guild.member(user).roles.has(muteRole.id)) {
+    message.guild.member(user).removeRole(muteRole).then(() => {
+      guild.channels.get(modlog.id).sendEmbed(embed).catch(console.error);
+    });
+  } else {
+    message.guild.member(user).addRole(muteRole).then(() => {
+      guild.channels.get(modlog.id).sendEmbed(embed).catch(console.error);
+    });
+  }
 
 };
 
@@ -35,6 +52,6 @@ exports.conf = {
 
 exports.help = {
   name: 'uyar',
-  description: 'İstediğiniz kişiyi uyarır.',
-  usage: 'uyar [kullanıcı] [sebep]'
+  description: 'İstediğiniz kişiyi  susturur.',
+  usage: 'sustur [kullanıcı] [sebep]'
 };
