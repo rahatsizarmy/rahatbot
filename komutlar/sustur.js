@@ -11,18 +11,18 @@ exports.run = (client, message, args) => {
   let guild = message.guild
   let reason = args.slice(1).join(' ');
   let user = message.mentions.users.first();
-  let modlog = guild.channels.find('name', 'r-log');
+  let modlog = guild.channels.find('name', 'mod-log');
   let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Susturulmuş');
-  if (!modlog) return message.reply('`r-log` kanalını bulamıyorum.').catch(console.error);
+  if (!modlog) return message.reply('`mod-log` kanalını bulamıyorum.').catch(console.error);
   if (!muteRole) return message.reply('`Susturulmuş` adlı bir rol bulamıyorum.').catch(console.error);
   if (reason.length < 1) return message.reply('Susturma sebebini yazmalısın.').catch(console.error);
   if (message.mentions.users.size < 1) return message.reply('Kimi susturacağını yazmalısın.').catch(console.error);
   const embed = new Discord.RichEmbed()
     .setColor(0x00AE86)
     .setTimestamp()
-    .addField('Eylem:', 'Susturma')
-    .addField('Kullanıcı:', `${user.username}#${user.discriminator} (${user.id})`)
+    .addField('Susturulma Komutu Kullanıldı', 'Bilgiler alta')
     .addField('Yetkili:', `${message.author.username}#${message.author.discriminator}`)
+    .addField('Kullanıcı:', `${user.username}#${user.discriminator} (${user.id})`)
     .addField('Sebep', reason);
 
   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('Gerekli izinlere sahip değilim.').catch(console.error);
