@@ -87,7 +87,8 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if (msg.content.toLowerCase() === 'sa') {
-    msg.reply('**Aleyküm selam,Hoş geldin Sefalar getirdin ^^ **');
+    msg.react('a').then
+    msg.react('🇸')
   }
 });
 
