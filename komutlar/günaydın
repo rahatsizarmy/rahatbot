@@ -1,0 +1,28 @@
+const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
+
+exports.run = (client, message, params) => {
+    const embed = new Discord.RichEmbed()
+
+    .setAuthor(message.author.username, message.author.avatarURL)
+
+    .addField(message.author.username,"***Günaydın Gifi ***")
+
+    .setImage("http://www.nkfu.com/wp-content/uploads/2014/01/gunaydin-1.gif")
+
+        .setColor(0x97ffff)
+
+    return message.channel.sendEmbed(embed)
+}
+exports.conf = {
+    enabled: true,
+    guildOnly: false,
+    aliases: [],
+    permLevel: 0
+  };
+  
+  exports.help = {
+    name: 'günaydın',
+    description: 'Günaydın Gifi Atar.',
+    usage: 'günaydın'
+  };
