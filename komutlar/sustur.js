@@ -51,7 +51,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'uyar',
+  name: 'sustur',
   description: 'İstediğiniz kişiyi  susturur.',
   usage: 'sustur [kullanıcı] [sebep]'
 };
