@@ -112,12 +112,103 @@ client.on('error', e => {
   console.log(chalk.bgRed(e.replace(regToken, 'that was redacted')));
 });
 
+client.on('guildMemberAdd', member => {
+  const hg = new Discord.RichEmbed()
+  .setAuthor(client.user.username, client.user.avatarURL)
+  .setThumbnail(member.user.displayAvatarURL)
+  .setDescription(`** ${member.guild.name} Sunucusuna Hoşgeldin ${member.user.username}**`)
+  .setFooter(`© Rahatsız Bot`)
+  .setTimestamp()
+  .setColor('RANDOM')
+  member.send(hg);
+});
 
-client.on("message", message => {
-const kufur = ["amk", "aq","oç","şerefsiz","orruspu çocuğu",",sikik","sex","31 çekelim","aq","piç","oc","sikdir","amı koduğumun"];
-if (kufur.some(word => message.content.includes(word)) ) {
-    message.reply("**Küfür Etmek Yasak !** :rage:")
-    message.delete()
+client.on('guildMemberRemove', member => {
+  const bb = new Discord.RichEmbed()
+  .setAuthor(client.user.username, client.user.avatarURL)
+  .setThumbnail(member.user.displayAvatarURL)
+  .setDescription(`** ${member.guild.name} Görüşmek Üzere ${member.user.username}** :wave:`)
+  .setFooter(`© Rahatsız Bot`)
+  .setTimestamp()
+  .setColor('RANDOM')
+  member.send(bb);
+});
+
+client.on('guildMemberAdd', member => {
+  member.addRole(member.guild.roles.find(r => r.name.startsWith('Üye')));
+  const channel = member.guild.channels.find('name', 'giriş-çıkış');
+  if (!channel) return member.guild.createChannel('giriş-çıkış');
+  if (!channel) return;
+ const embed = new Discord.RichEmbed()
+ .setColor('RANDOM')
+ .setAuthor(member.user.tag, member.user.avatarURL || member.user.defaultAvatarURL)
+ .setThumbnail(member.user.avatarURL || member.user.defaultAvatarURL)
+ .setTitle('Üye katıldı;')
+ .setDescription(`Sunucuya katıldı [${member.guild.memberCount} üye]!`)
+ .setFooter('giriş-çıkış', client.user.avatarURL)
+ .setTimestamp()
+ channel.send(embed);
+});
+
+client.on('guildMemberRemove', member => {
+  const channel = member.guild.channels.find('name', 'giriş-çıkış');
+  if (!channel) return member.guild.createChannel('giriş-çıkış');
+  if (!channel) return;
+ const embed = new Discord.RichEmbed()
+ .setColor('RANDOM')
+ .setAuthor(member.user.tag, member.user.avatarURL || member.user.defaultAvatarURL)
+ .setThumbnail(member.user.avatarURL || member.user.defaultAvatarURL)
+ .setTitle('Üye ayrıldı;')
+ .setDescription(`Sunucudan ayrıldı [${member.guild.memberCount} üye]!`)
+ .setFooter('giriş-çıkış', client.user.avatarURL)
+ .setTimestamp()
+ channel.send(embed);
+});
+
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(ayarlar.prefix)) return;
+
+  let command = message.content.split(' ')[0];
+  command = command.slice(ayarlar.prefix.length);
+
+  let args = message.content.split(' ').slice(1);
+
+  if (command === 'topla') {
+    let numArray = args.map(n=> parseInt(n));
+    let total = numArray.reduce( (p, c) => p+c);
+    const embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setTitle(total)
+    message.channel.send({embed});
+    message.react('✅')
+  }
+  if (command === 'çıkar') {
+    let numArray = args.map(n=> parseInt(n));
+    let total = numArray.reduce( (p, c) => p-c);
+    const embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setTitle(total)
+    message.channel.send({embed});
+    message.react('✅')
+  }
+  if (command === 'çarp') {
+    let numArray = args.map(n=> parseInt(n));
+    let total = numArray.reduce( (p, c) => p*c);
+    const embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setTitle(total)
+    message.channel.send({embed});
+    message.react('✅')
+  }
+  if (command === 'böl') {
+    let numArray = args.map(n=> parseInt(n));
+    let total = numArray.reduce( (p, c) => p/c);
+    const embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setTitle(total)
+    message.channel.send({embed});
+    message.react('✅')
   }
 });
 
