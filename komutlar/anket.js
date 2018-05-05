@@ -7,11 +7,13 @@ exports.run = (client, message, args) => {
     const embed = new Discord.RichEmbed()
     .setAuthor('ANKET')
     .setColor("RANDOM")
-    .setDescription(`${mesaj} \n\n\ Evet İçin: :thumbsup: Hayır İçin: :thumbsdown: `)
-    return message.channel.sendEmbed(embed);
-    msg.react(':thumbsup:').then
-    msg.react(':thumbsdown:')
-};
+    .setDescription(`${mesaj} \n\n\ Evet İçin: ✔ Hayır İçin: ❌ `)
+
+    message.channel.send(embed).then(msg => {
+
+      msg.react('✔').then(r => {
+        msg.react('❌')
+      })
 
 exports.conf = {
   enabled: true,
@@ -24,4 +26,6 @@ exports.help = {
   name: 'anket',
   description: 'Anket Açar.',
   usage: 'anket'
+};
+})
 };
