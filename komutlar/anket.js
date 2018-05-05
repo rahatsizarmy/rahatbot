@@ -14,6 +14,8 @@ exports.run = (client, message, args) => {
       msg.react('✔').then(r => {
         msg.react('❌')
       })
+    })
+  };
 
 exports.conf = {
   enabled: true,
@@ -27,5 +29,4 @@ exports.help = {
   description: 'Anket Açar.',
   usage: 'anket'
 };
-})
-};
+
