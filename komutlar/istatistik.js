@@ -18,7 +18,7 @@ exports.run = (client, message, params) => {
     .setThumbnail(message.guild.iconURL)
     .setFooter(message.guild.name, message.guild.iconURL)
     .addField('❯  İşletim Sistemi:  ','  Linux')
-    .addField('❯  Çalışma süresi:   ',`${duration}`)
+    .addField('❯  Çalışma süresi:  ',`${duration}`)
     .addField('❯  Sürüm:  ',`v${Discord.version}`)
     .addField('❯  Bellek kullanımı :  ',+(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)+' MB')
     .addField('❯  Genel İstatistikler:  ',`• Sunucular: ${client.guilds.size.toLocaleString()}`+`• Kullanıcılar: ${client.users.size}`+`• Kanallar: ${client.channels.size.toLocaleString()}`+`• Pingim: ${client.ping}`)

@@ -47,7 +47,7 @@ message.channel.send(embed).then(msg => {
 exports.conf = {
 enabled: true,
 guildOnly: false,
-aliases: [],
+aliases: ['y'],
 permLevel: 0
 };
 
