@@ -1,17 +1,11 @@
-const Discord = require('discord.js');
-const ayarlar = require('../ayarlar.json');
+const Discord = require("discord.js");
+const moment = require("moment");
 
-exports.run = (client, message, params) => {
+require("moment-duration-format");
 
-	if (!message.guild) {
-    const ozelmesajuyari = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setTimestamp()
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .addField(':warning: Uyarı :warning:', '`istatistik` adlı komutu özel mesajlarda kullanamazsın.')
-    return message.author.sendEmbed(ozelmesajuyari); }
-    if (message.channel.type !== 'dm') {
-      const sunucubilgi = new Discord.RichEmbed()
+exports.run = (client, message) => {
+  const duration = moment.duration(client.uptime).format(" D [gün], H [saat], m [dakika], s [saniye]");
+      const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
     .setTimestamp()
     .setDescription(message.guild.name +' ('+ message.guild.id + ')')
@@ -23,8 +17,7 @@ exports.run = (client, message, params) => {
     .addField('❯  Bellek kullanımı :  ',+(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)+' MB')
     .addField('❯  Genel İstatistikler:  ',`• Sunucular: ${client.guilds.size.toLocaleString()}`+`• Kullanıcılar: ${client.users.size}`+`• Kanallar: ${client.channels.size.toLocaleString()}`+`• Pingim: ${client.ping}`)
     .addField('❯  Yapımcım:  ',`@🌹Doğan.🌙#4996 `)
-    return message.channel.sendEmbed(istatistik);
-    }
+    return message.channel.sendEmbed(embed);
 };
 exports.conf = {
   enabled: true,
