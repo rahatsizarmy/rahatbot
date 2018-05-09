@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
-exports.run = function(client, message, args) {
-  message.reply('Pingim   ==  '+ client.ping);
-};
+
+exports.run = (client, message, args) => {
+      message.channel.send("...")
+      .then(nmsg => nmsg.edit(new Discord.RichEmbed().setColor('RANDOM').setDescription(`:ping_pong: Mesaj Gecikmesi: ${message.createdTimestamp} ms. Normal Gecikme: ${client.ping}`)))
+        };
 
 exports.conf = {
   enabled: true,

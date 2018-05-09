@@ -4,7 +4,12 @@ exports.run = (client, message, args) => {
   let mesaj = args.slice(0).join(' ');
 if (mesaj.length < 1) return message.reply('Yazmam için herhangi bir şey yazmalısın.');
   message.delete();
-  message.channel.send(mesaj);
+  const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .setTimestamp()
+  .setAuthor(message.author.username, message.author.avatarURL)
+  .addField('__'+message.author.username+`__ Adlı Kullanıcının Meajı`,'**'+mesaj+'**')
+  return message.channel.sendEmbed(embed)
 };
 
 exports.conf = {

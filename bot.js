@@ -77,6 +77,40 @@ client.unload = command => {
     }
   });
 };
+client.on("message", message => {
+  const dmchannel = client.channels.find("id", "443761073443831809");
+if (message.channel.type === "dm") {
+ const embed = new Discord.RichEmbed()
+    if (message.author.id === client.user.id) return;
+    dmchannel.sendMessage("", {embed: {
+            color: 3447003,
+            title: `Bana dm mesaj atıldı.`,
+              description: `Dm'yi atan: ${message.author.tag}\n\nDm mesaj: ${message.content}`
+            }})
+           }})
+client.on('guildCreate', guild => {
+
+const embed = new Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle('Sunucuya katıldım;')
+.setDescription(`${guild.name} adlı sunucuya eklendim \n[${guild.memberCount} üye]!\n[${guild.id}]\nSunucu sahibi: ${guild.owner}(${guild.owner.id})`)
+.setFooter('Rahatsız Bot', client.user.avatarURL)
+.setTimestamp()
+client.channels.get('443761073443831809').send(embed);
+guild.channels.get(`${guild.afkChannel.id}`).createInvite().then(invite =>
+  client.channels.get('443761073443831809').sendMessage('Bu sunucunun davet bağlantısı;\n' + invite.url)
+);
+});
+
+client.on('guildDelete', guild => {
+const embed = new Discord.RichEmbed()
+.setColor('RANDOM')
+.setTitle('Sunucudan atıldım;')
+.setDescription(`${guild.name} adlı sunucudan atıldım \n[${guild.memberCount} üye]!\n[${guild.id}]`)
+.setFooter('Rahatsız Bot', client.user.avatarURL)
+.setTimestamp()
+client.channels.get('443761073443831809').send(embed);
+});
 
 client.on('message', msg => {
   if (!msg.content.startsWith(prefix)) {
@@ -91,6 +125,8 @@ client.on('message', async msg => {
     msg.react('🇸');
   }
   });
+
+;
 
 client.elevation = message => {
   if(!message.guild) {
