@@ -5,20 +5,9 @@ require("moment-duration-format");
 
 exports.run = (client, message) => {
   const duration = moment.duration(client.uptime).format(" D [gün], H [saat], m [dakika], s [saniye]");
-      const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-    .setTimestamp()
-    .setDescription(message.guild.name +' ('+ message.guild.id + ')')
-    .setThumbnail(message.guild.iconURL)
-    .setFooter(message.guild.name, message.guild.iconURL)
-    .addField('❯  İşletim Sistemi:  ','  Linux')
-    .addField('❯  Çalışma süresi:  ',`${duration}`)
-    .addField('❯  Sürüm:  ',`v${Discord.version}`)
-    .addField('❯  Bellek kullanımı :  ',+(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)+' MB')
-    .addField('❯  Genel İstatistikler:  ',`• Sunucular: ${client.guilds.size.toLocaleString()}`+`• Kullanıcılar: ${client.users.size}`+`• Kanallar: ${client.channels.size.toLocaleString()}`+`• Pingim: ${client.ping}`)
-    .addField('❯  Yapımcım:  ',`@🌹Doğan.🌙#4996 `)
-    return message.channel.sendEmbed(embed);
-};
+message.channel.send("İstatistikler hesaplanıyor...")
+.then(nmsg => nmsg.edit(new Discord.RichEmbed().addField("❯  İşletim istemi:","Linux").addField('❯  Açık kalma süresi: ',`${duration}`).addField('❯  Sürümler:','Discord.JS:  v'+Discord.version+'\nBot:  v0.1.1').addField('❯  Bellek kullaımı:',(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)+' MB').addField('❯  Genel istatistikler','•Sunucu sayısı: '+ client.guilds.size.toLocaleString()+'\n•Kişi sayısı:  '+ client.users.size+'\n•Kanal sayısı: '+client.channels.size.toLocaleString()+'\n•Pingim:  '+client.ping).setColor('RANDOM').setAuthor('İstatistikler',client.user.avatarURL).setThumbnail(client.user.avatarURL).setFooter('© 2018 Rahatsız Bot|@🌹Doğan.🌙#4996 tarfından kodlandı.',client.user.avatarURL).setTimestamp())
+)};
 exports.conf = {
   enabled: true,
   guildOnly: false,
